@@ -85,8 +85,9 @@ export async function GET(
 
     // Redirect to file URL
     return NextResponse.redirect(download.product.fileUrl)
-  } catch (error) {
-    console.error('Error processing download:', error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error processing download:', errorMessage)
     return NextResponse.json(
       {
         success: false,

@@ -100,8 +100,9 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 }
     )
-  } catch (error) {
-    console.error('Error creating download request:', error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error creating download request:', errorMessage)
     return NextResponse.json(
       {
         success: false,

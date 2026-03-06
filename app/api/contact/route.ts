@@ -60,8 +60,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { message: 'Pesan Anda telah terkirim. Kami akan menghubungi Anda segera.' },
       { status: 200 }
     )
-  } catch (error) {
-    console.error('Contact form error:', error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Contact form error:', errorMessage)
     return NextResponse.json(
       { error: 'Terjadi kesalahan saat mengirim pesan' },
       { status: 500 }

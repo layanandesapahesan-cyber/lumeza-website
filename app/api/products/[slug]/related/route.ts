@@ -107,8 +107,9 @@ export async function GET(
       },
       { status: 200 }
     )
-  } catch (error) {
-    console.error('Error fetching related products:', error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error fetching related products:', errorMessage)
     return NextResponse.json(
       {
         success: false,
