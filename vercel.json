@@ -1,0 +1,41 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "nodeVersion": "18.x",
+  "env": {
+    "DATABASE_URL": "@DATABASE_URL",
+    "RESEND_API_KEY": "@RESEND_API_KEY",
+    "NEXT_PUBLIC_FROM_EMAIL": "@NEXT_PUBLIC_FROM_EMAIL",
+    "NEXT_PUBLIC_BASE_URL": "@NEXT_PUBLIC_BASE_URL",
+    "NEXT_PUBLIC_API_URL": "@NEXT_PUBLIC_API_URL",
+    "NEXT_PUBLIC_GA_ID": "@NEXT_PUBLIC_GA_ID",
+    "NEXT_PUBLIC_CONTACT_EMAIL": "@NEXT_PUBLIC_CONTACT_EMAIL"
+  },
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 10
+    }
+  },
+  "regions": ["sin1"],
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
+  "outputDirectory": ".next",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/api/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=10, stale-while-revalidate=59"
+        }
+      ]
+    }
+  ]
+}
