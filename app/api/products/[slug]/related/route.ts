@@ -4,6 +4,19 @@ interface RouteParams {
   slug: string
 }
 
+// Tambahkan interface untuk RelatedProduct
+interface RelatedProduct {
+  id: string
+  slug: string
+  name: string
+  category: string
+  price: number
+  salePrice: number | null
+  images: string
+  type: string
+  downloads: number
+}
+
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<RouteParams> }
@@ -79,8 +92,8 @@ export async function GET(
       },
     })
 
-    // Parse JSON fields
-    const parsedRelatedProducts = relatedProducts.map((product) => ({
+    // Parse JSON fields - FIXED: added type for product parameter
+    const parsedRelatedProducts = relatedProducts.map((product: RelatedProduct) => ({
       ...product,
       images: JSON.parse(product.images),
     }))
