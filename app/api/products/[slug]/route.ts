@@ -62,7 +62,7 @@ export async function GET(
         where: { slug },
         data: { views: { increment: 1 } },
       })
-      .catch((error) => {
+      .catch((error: unknown) => {
         console.error('Error incrementing views:', error)
       })
 
@@ -80,8 +80,9 @@ export async function GET(
       },
       { status: 200 }
     )
-  } catch (error) {
-    console.error('Error fetching product:', error)
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error fetching product:', errorMessage)
     return NextResponse.json(
       {
         success: false,
