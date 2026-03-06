@@ -111,7 +111,21 @@ export async function GET(request: NextRequest) {
     })
 
     // Parse JSON fields (images, tags)
-    const parsedProducts = products.map((product) => ({
+    const parsedProducts = products.map((product: {
+      id: string;
+      slug: string;
+      name: string;
+      description: string;
+      type: string;
+      style: string | null;
+      category: string;
+      price: number;
+      salePrice: number | null;
+      images: string | null;
+      downloads: number;
+      views: number;
+      createdAt: Date;
+    }) => ({
       ...product,
       images: product.images ? JSON.parse(product.images) : [],
     }))
