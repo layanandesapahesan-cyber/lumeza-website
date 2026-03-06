@@ -1,0 +1,104 @@
+# Lumeza Vercel Environment Variables - Quick Reference
+
+**For**: https://vercel.com/layanandesapahesan-cyber/lumeza-website/settings/environment-variables
+
+**Copy-paste each of these into Vercel**:
+
+---
+
+## Variable 1: DATABASE_URL
+```
+Key: DATABASE_URL
+Value: file:./prisma/dev.db
+```
+
+---
+
+## Variable 2: RESEND_API_KEY
+```
+Key: RESEND_API_KEY
+Value: re_xxxxxxxxxxxxx
+Note: Replace xxxxxxxxxxxxx with your actual API key from https://resend.com
+```
+
+---
+
+## Variable 3: NEXT_PUBLIC_FROM_EMAIL
+```
+Key: NEXT_PUBLIC_FROM_EMAIL
+Value: noreply@lumeza.com
+```
+
+---
+
+## Variable 4: NEXT_PUBLIC_BASE_URL
+```
+Key: NEXT_PUBLIC_BASE_URL
+Value: https://lumeza-website.vercel.app
+```
+
+---
+
+## Variable 5: NEXT_PUBLIC_API_URL
+```
+Key: NEXT_PUBLIC_API_URL
+Value: https://lumeza-website.vercel.app/api
+```
+
+---
+
+## Variable 6: NEXT_PUBLIC_CONTACT_EMAIL
+```
+Key: NEXT_PUBLIC_CONTACT_EMAIL
+Value: hello@lumeza.com
+```
+
+---
+
+## Variable 7: CONTACT_FORM_RECIPIENT_EMAIL
+```
+Key: CONTACT_FORM_RECIPIENT_EMAIL
+Value: hello@lumeza.com
+```
+
+---
+
+## Steps to Add to Vercel
+
+1. Go to https://vercel.com/layanandesapahesan-cyber/lumeza-website
+2. Click **Settings**
+3. Click **Environment Variables**
+4. For each variable above:
+   - Click **Add New**
+   - Paste the **Key** in the first field
+   - Paste the **Value** in the second field
+   - Make sure **Production** is selected
+   - Click **Add**
+5. Click **Save**
+
+---
+
+## Testing After Adding Variables
+
+1. Verify all 7 appear in the list
+2. Each should show with ✅ checkmark
+3. No variables should show ✕ or warnings
+4. Click **Save** button
+5. Return to deployments and redeploy
+
+---
+
+## Getting RESEND_API_KEY
+
+1. Go to https://resend.com
+2. Sign up or log in
+3. Go to API Keys section
+4. Click "Create API Key"
+5. Copy the key (starts with `re_`)
+6. Use it for Variable 2 above
+
+---
+
+**All 7 variables MUST be set for deployment to work properly!**
+
+Check them with: https://lumeza-website.vercel.app/api/diag

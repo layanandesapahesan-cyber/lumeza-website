@@ -39,3 +39,6 @@ yarn-error.log*
 .vscode/settings.json
 
 /generated/prisma
+
+.vercel
+.env*.local
